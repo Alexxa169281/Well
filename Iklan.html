@@ -1,0 +1,106 @@
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Iklan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="url"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .ad-preview {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Buat Iklan</h1>
+        <form id="adForm">
+            <div class="form-group">
+                <label for="title">Judul Iklan:</label>
+                <input type="text" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Deskripsi Iklan:</label>
+                <textarea id="description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imageUrl">URL Gambar:</label>
+                <input type="url" id="imageUrl" required>
+            </div>
+            <button type="submit">Buat Iklan</button>
+        </form>
+
+        <div class="ad-preview" id="adPreview" style="display: none;">
+            <h2>Preview Iklan</h2>
+            <h3 id="previewTitle"></h3>
+            <img id="previewImage" src="" alt="Iklan Gambar" style="max-width: 100%; height: auto;">
+            <p id="previewDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Ambil nilai dari form
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+
+            // Tampilkan preview iklan
+            document.getElementById('previewTitle').innerText = title;
+            document.getElementById('previewDescription').innerText = description;
+            document.getElementById('previewImage').src = imageUrl;
+
+            // Tampilkan div preview
+            document.getElementById('adPreview').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
